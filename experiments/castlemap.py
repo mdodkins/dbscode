@@ -7,20 +7,17 @@ def draw_castle_map(map, tower_height, tower_spacing):
    for t in range(0,len(map)):
       if map[t] == 'O':
          tower((x,y,0), tower_height)
-
+      
       if map[t] == '\n':
          y = y + tower_spacing
          x = 0
       else:
          x = x + tower_spacing
 
-tower_height = 20 
-tower_spacing = 10
 castle_map = ("O O O O O"
               "O       O"
               "O       O"
               "O O O O O")
-draw_castle_map(castle_map, tower_height, tower_spacing)
 
-
-  
+draw_castle_map(castle_map, 20, 10)
+ 
