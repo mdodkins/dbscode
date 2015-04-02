@@ -14,6 +14,13 @@ def draw_castle_map(map, tower_height, tower_spacing):
       else:
          x = x + tower_spacing
 
-draw_castle_map("O", 10, 10)
+tower_height = 20 
+tower_spacing = 10
+castle_map = ("O O O O O"
+              "O       O"
+              "O       O"
+              "O O O O O")
+draw_castle_map(castle_map, tower_height, tower_spacing)
+
 
   
