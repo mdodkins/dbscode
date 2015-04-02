@@ -2,7 +2,7 @@ import unittest
 from mock import patch, MagicMock, call
 
 
-class TestSingleTower(unittest.TestCase):
+class TestCastleMap(unittest.TestCase):
 
    def setUp(self):
       self.dbscode_minecraft_mock = MagicMock()
@@ -29,7 +29,7 @@ class TestSingleTower(unittest.TestCase):
       self.draw_castle_map("O", height, spacing)
       self.autocastle_mock.tower.assert_called_with((0,0,0),height)
 
-   def test_three_towers(self):
+   def test_three_towers_in_a_row(self):
       self.autocastle_mock.reset_mock()
       height = 10
       spacing = 10
@@ -37,6 +37,22 @@ class TestSingleTower(unittest.TestCase):
       expected_calls = [call((0,0,0), height), 
                         call((20,0,0), height),
                         call((40,0,0), height)]
+      self.autocastle_mock.tower.assert_has_calls(expected_calls)
+
+   def test_six_towers_in_a_square(self):
+      self.autocastle_mock.reset_mock()
+      height = 10
+      spacing = 10
+      self.draw_castle_map("O O O\nO O O\nO O O", height, spacing)
+      expected_calls = [call((0,0,0), height), 
+                        call((20,0,0), height),
+                        call((40,0,0), height),
+                        call((0,10,0), height),
+                        call((20,10,0), height),
+                        call((40,10,0), height),
+                        call((0,20,0), height),
+                        call((20,20,0), height),
+                        call((40,20,0), height)]
       self.autocastle_mock.tower.assert_has_calls(expected_calls)
 
 if __name__ == '__main__':
