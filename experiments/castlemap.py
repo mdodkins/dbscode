@@ -19,5 +19,7 @@ castle_map = ("O O O O O"
               "O       O"
               "O O O O O")
 
-draw_castle_map(castle_map, 20, 10)
+height = 20
+spacing = 10
+draw_castle_map(castle_map, height, spacing)
  
